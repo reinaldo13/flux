@@ -13,6 +13,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var FluxStore = require('flux/lib/FluxStore');
 var TodoConstants = require('../constants/TodoConstants');
 var assign = require('object-assign');
+var extend = require('extend-it');
 
 var _todos = {};
 
@@ -72,13 +73,8 @@ function destroyCompleted() {
   }
 }
 
-// create a TodoStore subclass by doing classical inheritance
-// see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
-function TodoStore(dispatcher) {
-  FluxStore.call(this, dispatcher); // call super constructor.
-}
-TodoStore.prototype = Object.create(FluxStore.prototype);
-TodoStore.prototype.constructor = TodoStore;
+// create a TodoStore subclass
+var TodoStore = extend(FluxStore);
 
 /**
  * Tests whether all the remaining TODO items are marked as completed.

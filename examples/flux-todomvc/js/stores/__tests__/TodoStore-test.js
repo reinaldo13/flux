@@ -15,6 +15,7 @@ jest.dontMock('flux/lib/Dispatcher');
 jest.dontMock('flux/lib/FluxStore');
 jest.dontMock('../TodoStore');
 jest.dontMock('object-assign');
+jest.dontMock('extend-it');
 
 describe('TodoStore', function() {
 
